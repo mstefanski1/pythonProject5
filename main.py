@@ -1,124 +1,75 @@
 import numpy as np
+#zad 1
+a = np.array([2, 2, 5])
+b = np.array([1, 3, 8])
+print(a)
+print(b)
+c=np.dot(a,b)
+print(c)
+#zad 2
+d=np.array([[1,2,3],[4,5,6],[7,8,9]])
+e=np.array([[1,2,3,7],[4,5,6,2],[6,7,8,9],[7,5,2,7]])
+print(d)
+print(e)
+print(d.min(axis=1))
+print(e.min(axis=1))
+print(d.min(axis=0))
+print(e.min(axis=0))
+#zad3
+f=a*b
+print(f)
+#zad4
+g = np.array([2, 2, 5])
+h = np.array([1.5, 3.2, 8.8])
+i=np.dot(g,h)
+print(i)
+#zad 5
+j = np.array([[2, 2, 5],[6,2,7]])
+for u in j:
+    a=np.sin(j)
+print(a)
+#zad 6
+for u in j:
+    b=np.cos(j)
+print(b)
+#zad 7
+r=a+b
+print(r)
+#zad 8
+q= np.arange(9).reshape((3,3))
+for t in q:
+    print(t)
+#zad 9
+m = np.arange(9).reshape((3,3))
+for i in m.flat:
+    print(i)
+#zad 10
+a = np.arange(81).reshape((9,9))
+print(a)
+c=a.reshape(3,27)
+print(c)
+#mamy 8 mozliwosci(3 rzedowa, 9 rzedowa, 27 rzedowa, 81 rzedowa oraz 3 kolumny, 9 kolumn, 27 kolumn, 81 kolumn)
+#zad 11
+y=np.arange(12)
+print(y)
+c=y.reshape(3,4)
+print(c)
+c=y.reshape(4,3)
+print(c)
+c=y.reshape(2,6)
+print(c)
+#nie sa identyczne
 
-#ZAD1
-arr = np.arange(20) * 4
-print(arr)
-#ZAD2
-lst_float = [1.2, 2.3, 3.4, 4.5, 5.6]
-lst_int32 = np.array(lst_float, dtype='int32')
-print(lst_int32)
-#ZAD3
-def podwa(n):
-    return np.array([2 ** i for i in range(n*n)]).reshape((n, n))
-print(podwa(3))
-#ZAD4
 
-def generuj(base, n):
-    return np.logspace(0, n-1, n, base=base)
-print(generuj(2, 4))
-#ZAD5
 
-def macierz(n):
-    reversed_vector = np.arange(n)[::-1]
-    diagonal_vector = np.diag(reversed_vector, k=2)
-    return diagonal_vector
-print(macierz(5))
-#ZAD6
 
-# słowa do umieszczenia w macierzy
-words = ['PYTHON', 'NUMPY', 'ARRAY', 'MATRIX']
 
-# wymiary macierzy
-n_rows = len(words)
-n_cols = max(len(word) for word in words)
 
-# inicjalizacja macierzy zerami
-matrix = np.zeros((n_rows, n_cols), dtype='U1')
 
-# umieszczenie słów w macierzy
-for i, word in enumerate(words):
-    matrix[i, :len(word)] = list(word)
 
-# wypisanie macierzy w postaci wykreślanki
-for i in range(n_rows):
-    for j in range(n_cols):
-        if matrix[i, j] != '':
-            print(matrix[i, j], end=' ')
-        else:
-            print(' ', end=' ')
-    print()
 
-# dodanie słowa po ukosie (od prawej do lewej)
-diagonal_word = 'NUM'
-for i in range(len(diagonal_word)):
-    matrix[i, n_cols-len(diagonal_word)+i] = diagonal_word[i]
 
-# ponowne wypisanie macierzy w postaci wykreślanki z dodanym słowem po ukosie
-print()
-for i in range(n_rows):
-    for j in range(n_cols):
-        if matrix[i, j] != '':
-            print(matrix[i, j], end=' ')
-        else:
-            print(' ', end=' ')
-    print()
-#ZAD7
 
-def genmacierz(n):
-    # Tworzenie macierzy n*n wypełnionej zerami
-    matrix = np.zeros((n, n), dtype=int)
 
-    # Uzupełnianie macierzy o kolejne wielokrotności liczby 2 na przekątnych
-    for i in range(n):
-        matrix[i, i] = 2 * (i + 1)
-        if i < n - 1:
-            matrix[i, i + 1] = 2 * (i + 1)
-            matrix[i + 1, i] = 2 * (i + 1)
 
-    return matrix
-#ZAD8
-
-def array(arr, direction):
-    if direction == 'vertical':
-        if arr.shape[0] % 2 != 0:
-            print('Ilość wierszy nie pozwala na operację.')
-            return arr
-        else:
-            half = arr.shape[0] // 2
-            return arr[:half], arr[half:]
-    elif direction == 'horizontal':
-        if arr.shape[1] % 2 != 0:
-            print('Ilość kolumn nie pozwala na operację.')
-            return arr
-        else:
-            half = arr.shape[1] // 2
-            return arr[:, :half], arr[:, half:]
-    else:
-        print('Nieprawidłowy kierunek podziału.')
-        return arr
-    arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    print(arr)
-
-    # Podział pionowy
-    arr1, arr2 = divide_array(arr, 'vertical')
-    print(arr1)
-    print(arr2)
-
-    # Podział poziomy
-    arr3, arr4 = divide_array(arr, 'horizontal')
-    print(arr3)
-    print(arr4)
-
-    # Nieprawidłowy kierunek podziału
-    arr5 = divide_array(arr, 'wrong')
-    print(arr5)
-
-    #ZAD9
-    # wygenerowanie tablicy jednowymiarowej
-    arr = np.arange(1, 26)
-
-    # zmiana kształtu na macierz 5x5
-    arr = arr.reshape((5, 5))
-
-    print(arr)
 
