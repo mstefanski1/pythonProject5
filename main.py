@@ -1,75 +1,122 @@
+import math
 import numpy as np
-#zad 1
-a = np.array([2, 2, 5])
-b = np.array([1, 3, 8])
-print(a)
-print(b)
-c=np.dot(a,b)
-print(c)
-#zad 2
-d=np.array([[1,2,3],[4,5,6],[7,8,9]])
-e=np.array([[1,2,3,7],[4,5,6,2],[6,7,8,9],[7,5,2,7]])
-print(d)
-print(e)
-print(d.min(axis=1))
-print(e.min(axis=1))
-print(d.min(axis=0))
-print(e.min(axis=0))
-#zad3
-f=a*b
-print(f)
-#zad4
-g = np.array([2, 2, 5])
-h = np.array([1.5, 3.2, 8.8])
-i=np.dot(g,h)
-print(i)
-#zad 5
-j = np.array([[2, 2, 5],[6,2,7]])
-for u in j:
-    a=np.sin(j)
-print(a)
-#zad 6
-for u in j:
-    b=np.cos(j)
-print(b)
-#zad 7
-r=a+b
-print(r)
-#zad 8
-q= np.arange(9).reshape((3,3))
-for t in q:
-    print(t)
-#zad 9
-m = np.arange(9).reshape((3,3))
-for i in m.flat:
-    print(i)
-#zad 10
-a = np.arange(81).reshape((9,9))
-print(a)
-c=a.reshape(3,27)
-print(c)
-#mamy 8 mozliwosci(3 rzedowa, 9 rzedowa, 27 rzedowa, 81 rzedowa oraz 3 kolumny, 9 kolumn, 27 kolumn, 81 kolumn)
-#zad 11
-y=np.arange(12)
-print(y)
-c=y.reshape(3,4)
-print(c)
-c=y.reshape(4,3)
-print(c)
-c=y.reshape(2,6)
-print(c)
-#nie sa identyczne
+import matplotlib.pyplot as plt
+import pandas as pd
 
+#y= np.arange(2,9,2)
+#plt.plot(y)
+#plt.show()
 
+#x=np.array([1,2,3,4])
+#y=x**2
 
+#plt.plot(x,y,'r-')
+#plt.plot(x,y,'o')
+#plt.axis([0,6, 0,20])
+#plt.show()
 
+a=np.arange(0,5,0.2)
+#plt.plot(a, a, 'r-', a,a**2,'bs',a,a**3,'g')
+#plt.legend(labels=['liniowa','kwadratowa','szescienna'], loc='center left')
+#plt.show()
 
+#plt.plot(a,a,'r-',label='liniowa')
+#plt.plot(a,a**2,'bs',label='kwadratowa')
+#plt.plot(a,a**3,'g',label='szescienna')
+#plt.xlabel('x')
+#plt.ylabel('y')
 
+#plt.title('Wykres liniowy')
+#plt.savefig('wykres.png')
+#plt.legend()
+#plt.show()
+#img = Image.open('wykres.png')
+#img=img.convert('RGB')
+#img.save('wykres')
 
+#x=np.arange(0,10.1,0.1)
+#y=np.sin(x)
+#plt.plot(x,y,'r')
+#plt.show()
 
+# data = {'a':np.arange(50),
+#         'c':np.random.randint(0,50,50),
+#         'd':np.random.randn(50)}
+# data['b'] = data['a']+ 10 * np.random.randn(50)
+# data['d'] = np.abs(data['d'])*100
+#
+# plt.scatter('a','b',c='c',s='d',data=data,cmap='plasma')
+# plt.xlabel('a')
+# plt.ylabel('b')
+# plt.show()
 
+x1=np.arange(0,2,0.02)
+x2=np.arange(0,2,0.02)
 
+y1 = np.sin(2*np.pi*x1)
+y2 = np.cos(2*np.pi*x2)
 
+# plt.subplot(2,1,1)
+# plt.plot(x1,y1)
+# plt.xlabel('x')
+# plt.ylabel('sin(x)')
+# plt.title('Wykres sin(x)')
+# plt.subplot(2,1,2)
+# plt.plot(x2,y2)
+# plt.xlabel('x')
+# plt.ylabel('cos(x)')
+# plt.title('Wykres cos(x)')
+# plt.subplots_adjust(hspace=0.5)
+# fig,axs = plt.subplot(3,2)
+# axs[0,0].plot(x1,y1,'r')
+# axs[0,0].set_xlabel('x')
+# axs[0,0].set_ylabel('sin(x)')
+# axs[0,0].set_title('wykres sin(x)')
+#
+# axs[1,1].plot(x2,y2,'g')
+# axs[1,1].set_xlabel('x')
+# axs[1,1].set_ylabel('cos(x)')
+# axs[1,1].set_title('wykres cos(x)')
+#
+# axs[2,0].plot(x1,y1,'r')
+# axs[2,0].set_xlabel('x')
+# axs[2,0].set_ylabel('sin(x)')
+# axs[2,0].settitle('wykres cos(x)')
+#
+# fig.delaxes(axs[0,1])
+# fig.delaxes(axs[1,0])
+# fig.delaxes(axs[2,1])
+#
+# plt.show()
+
+# ts=pd.Series(np.random.randn(1000))
+# ts=ts.cumsum()
+#
+# ts.plot()
+# plt.show()
+
+# data={'Kraj': ['Belgia','Indie','Brazylia','Polska'],
+#       'Stolica': ['Bruksela','New Delhi','Brasilia','Warszawa'],
+#       'Kontynent': ['Europa','Azja','Ameryka Poludniowa','Europa'],
+#       'Populacja': [11109846,1303171035,207847528,38675467]}
+# df=pd.DataFrame(data)
+# grupa=df.groupby('Kontynent').agg({'Populacja': ['sum']})
+# # grupa.plot(kind='bar',xlabel='Kontynenty',ylabel='Populacja',legend=True,title='Populacja na kontynencie',rot=0)
+# wykres=grupa.plot.bar()
+# wykres.set_xlabel('Kontynenty')
+# wykres.set_ylabel('Populacja')
+# wykres.tick_params(axis='x',labelrotation=0)
+# wykres.legend()
+# wykres.set_title('Populacja na kontynentach')
+#
+# plt.show()
+
+df = pd.read_csv('dance.csv',header=0,setp=';',decimal='.')
+print(df)
+grupa=df.groupby('Imie i nazwisko').agg({'Wartosc zamowienia':['sum']})
+grupa.plot(kind='pie',subplots=True,autopct='%.2f%%',
+           fontsize=20,colors=['red','green'])
+plt.show()
 
 
 
